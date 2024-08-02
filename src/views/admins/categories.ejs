@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Categories</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="/admins">Admins</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/admins/categories">Categories</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/admins/products">Products</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/orders">Orders</a>
+              </li>
+            </ul>
+            <a href="/admins/profile" class="btn btn-outline-success">Profile</a>
+          </div>
+        </div>
+    </nav>
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-header">
+                <h3>Categories</h3>
+                <a href="/categories/create" class="btn btn-success mb-2 mt-2">Add Category</a>
+            </div>
+            <div class="card-body">
+                <ul class="list-group">
+                    <% categories.forEach(category => { %>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <%= category.name %>
+                            <span>
+                                <a href="/categories/edit/<%= category.id %>" class="btn btn-warning btn-sm gap-3">Edit</a>
+                                <form action="/categories/delete/<%= category.id %>" method="post">
+                                    <button class="btn btn-outline-danger">Delete</button>
+                                </form>
+                            </span>
+                        </li>
+                    <% }) %>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Products</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="/admins">Admins</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/admins/categories">Categories</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/admins/products">Products</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/orders">Orders</a>
+              </li>
+            </ul>
+            <a href="/admins/profile" class="btn btn-outline-success">Profile</a>
+          </div>
+        </div>
+    </nav>
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-header">
+                <h3>Admin Products</h3>
+            </div>
+            <div class="card-body">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Category</th>
+                            <th scope="col">Count</th>
+                            <th scope="col">Image</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% products.forEach(product => { %>
+                            <tr>
+                                <th scope="row"><%= product.id %></th>
+                                <td><%= product.name %></td>
+                                <td>$<%= product.price %></td>
+                                <td><%= product.category_name %></td>
+                                <td><%= product.count %></td>
+                                <td><img src="<%= product.img %>" alt="<%= product.name %>" class="img-thumbnail" style="width: 50px;"></td>
+                                <td>
+                                    <a href="/products/edit/<%= product.id %>" class="btn btn-outline-warning btn-sm gap-2">Edit</a>
+                                    <form action="/products/delete/<%= product.id %>" method="POST" class="d-inline gap-2">
+                                        <button type="submit" class="btn btn-outline-danger btn-sm">Delete</button>
+                                    </form>
+                                    <a href="/products/add/<%= product.id %>" class="btn btn-primary btn-sm">Add</a>
+                                </td>
+                            </tr>
+                        <% }) %>
+                    </tbody>
+                </table>
+                <a href="/products/create" class="btn btn-success">Add New Product</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,18 @@
+[
+  {
+    "id": "578ffac5-265c-4037-9dcf-73afbf5b0618",
+    "fullname": "Ellie Williams",
+    "username": "ellie",
+    "password": "1234",
+    "phone": "8973302474",
+    "role": "user"
+  },
+  {
+    "id": "9e8213dd-1562-4d91-92fb-700723b3a5ad",
+    "fullname": "Joel Miller",
+    "username": "joel",
+    "password": "1234",
+    "phone": "8973302474",
+    "role": "user"
+  }
+]

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Profile</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="/admins">Admins</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/admins/categories">Categories</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/admins/products">Products</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/orders">Orders</a>
+              </li>
+            </ul>
+            <a href="/admins/profile" class="btn btn-outline-success">Profile</a>
+          </div>
+        </div>
+    </nav>
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-header">
+                <h3>Admin Profile</h3>
+            </div>
+            <div class="card-body">
+                <p><strong>Full Name:</strong> <%= admin.fullname %></p>
+                <p><strong>Username:</strong> <%= admin.username %></p>
+                <p><strong>Phone:</strong> <%= admin.phone %></p>
+                <a href="/admins/edit/<%= admin.id %>" class="btn btn-primary mb-3">Edit Profile</a>
+                <form class="mb-3" action="/admins/delete/<%= admin.id %>" method="post">
+                    <button class="btn btn-outline-danger" type="submit">Delete</button>
+                </form>
+                <form action="/admins/exit" method="post">
+                    <button class="btn btn-outline-warning" type="submit">Exit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

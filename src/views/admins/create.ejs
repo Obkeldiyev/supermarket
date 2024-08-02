@@ -1,0 +1,59 @@
+<!-- admins/createAdmin.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Admin</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="/admins">Admins</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/admins/categories">Categories</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/admins/products">Products</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/orders">Orders</a>
+              </li>
+            </ul>
+            <a href="/admins/profile" class="btn btn-outline-success">Profile</a>
+          </div>
+        </div>
+    </nav>
+    <div class="container">
+        <h1>Create New Admin</h1>
+        <form action="/admins/create" method="POST">
+            <div class="form-group">
+                <label for="fullname">Full Name:</label>
+                <input type="text" class="form-control" id="fullname" name="fullname" required>
+            </div>
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" class="form-control" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" class="form-control" id="password" name="password" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone:</label>
+                <input type="text" class="form-control" id="phone" name="phone" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Create Admin</button>
+        </form>
+
+        <!-- Back to Admins List Link -->
+        <a href="/admins" class="btn btn-secondary mt-3">Back to Admins List</a>
+    </div>
+</body>
+</html>

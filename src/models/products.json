@@ -1,0 +1,11 @@
+[
+  {
+    "id": 1,
+    "name": "some",
+    "price": 40000,
+    "count": null,
+    "category_name": "somehting",
+    "category_id": 1,
+    "img": "https://images.immediate.co.uk/production/volatile/sites/30/2017/01/Bunch-of-bananas-67e91d5.jpg?quality=90&resize=440,400"
+  }
+]

@@ -1,0 +1,24 @@
+[
+  {
+    "id": 1,
+    "fullname": "Ellie Williams",
+    "username": "ellie",
+    "password": "1234",
+    "role": "admin"
+  },
+  {
+    "id": 2,
+    "fullname": "Dina",
+    "username": "dina",
+    "password": "1234",
+    "role": "admin"
+  },
+  {
+    "id": 3,
+    "fullname": "Joel Miller",
+    "username": "joel",
+    "password": "1234",
+    "phone": "8973302474",
+    "role": "admin"
+  }
+]

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orders</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="/admins">Admins</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/admins/categories">Categories</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/admins/products">Products</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/orders">Orders</a>
+              </li>
+            </ul>
+            <a href="/admins/profile" class="btn btn-outline-success">Profile</a>
+          </div>
+        </div>
+    </nav>
+    <div class="container mt-5">
+        <h1>Orders</h1>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>User</th>
+                    <th>Product</th>
+                    <th>Contact</th>
+                    <th>Count</th>
+                    <th>Total Price</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% orders.forEach(order => { %>
+                    <tr>
+                        <td><%= order.id %></td>
+                        <td><%= order.user %></td>
+                        <td><%= order.product %></td>
+                        <td><%= order.contact %></td>
+                        <td><%= order.count %></td>
+                        <td>$<%= order.totalPrice %></td>
+                        <td>
+                            <form action="/orders/done/<%= order.id %>" method="POST" class="d-inline">
+                                <button type="submit" class="btn btn-danger">Mark as Done</button>
+                            </form>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

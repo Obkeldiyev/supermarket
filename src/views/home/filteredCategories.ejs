@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Products</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="/main">Main</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/categories">Categories</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/products">Products</a>
+              </li>
+            </ul>
+            <a href="/users/profile" class="btn btn-outline-success">Profile</a>
+          </div>
+        </div>
+    </nav>
+    <div class="container mt-5">
+        <div class="row">
+            <% products.forEach(product => { %>
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <img src="<%= product.img %>" class="card-img-top" alt="<%= product.name %>">
+                        <div class="card-body">
+                            <h5 class="card-title"><%= product.name %></h5>
+                            <p class="card-text">Price: $<%= product.price %></p>
+                            <p class="card-text">Category: <%= product.category_name %></p>
+                            <p class="card-text">Available: <%= product.count %></p>
+                            <a href="/products/<%= product.id %>" class="mt-2 mb-2 btn btn-outline-success">Buy</a>
+                            <a href="/comments/<%= product.id %>" class="w-100 btn btn-outline-primary">Comments</a>
+                        </div>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+    </div>
+</body>
+</html>

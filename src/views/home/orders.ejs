@@ -1,0 +1,74 @@
+<!-- home/orders.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Orders</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="/main">Main</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/categories">Categories</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/products">Products</a>
+              </li>
+            </ul>
+            <a href="/users/profile" class="btn btn-outline-success">Profile</a>
+          </div>
+        </div>
+    </nav>
+    <div class="container">
+        <h1>Your Order Details</h1>
+        <div class="card" style="width: 18rem;">
+            <img src="<%= product.img %>" class="card-img-top" alt="<%= product.name %>">
+            <div class="card-body">
+                <h5 class="card-title"><%= product.name %></h5>
+                <p class="card-text">$ <%= product.price.toFixed(2) %></p>
+                <p class="card-text">Category: <%= product.category_name %></p>
+                <p class="card-text">Count: <%= product.count %></p>
+
+                <!-- Form for ordering -->
+                <form action="/orders/<%= product.id %>" method="POST">
+                    <div class="form-group">
+                        <label for="amount">Amount:</label>
+                        <input type="number" class="form-control" id="amount" name="amount" min="0" max="<%= product.count %>" required>
+                    </div>
+                    <p class="card-text">Total Price: $ <span id="totalPrice">0.00</span></p>
+                    <button type="submit" class="btn btn-primary">Order Now</button>
+                </form>
+
+                <!-- Back to Home link -->
+                <a href="/main" class="btn btn-secondary mt-3">Back to Home</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script to calculate total price -->
+    <script>
+        document.getElementById('amount').addEventListener('input', function() {
+            const amount = parseFloat(this.value);
+            const productPrice = <%= product.price %>;
+            const deliveryFee = 30000; // Additional fee for delivery
+
+            // Check if amount is a valid number and greater than zero
+            if (!isNaN(amount) && amount > 0) {
+                const totalPrice = (productPrice * amount) + deliveryFee;
+                document.getElementById('totalPrice').textContent = totalPrice.toFixed(2);
+            } else {
+                // Handle case where amount is not valid or zero
+                document.getElementById('totalPrice').textContent = "0.00";
+            }
+        });
+    </script>
+</body>
+</html>
